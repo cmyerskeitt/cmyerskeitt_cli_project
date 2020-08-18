@@ -1,13 +1,14 @@
-require 'pry'
+
 
 class CmyerskeittCliProject::Cli 
   def start
-    binding.pry 
-    puts "Welcome to Christine's Gem!" 
-    # ask_zipcode
+    puts "Welcome to Christine's Dictionary CLI Gem!" 
+    puts "What word word you like to learn more about today?"
+    gets.chomp 
+
   end
 
- 
+
 
 
 
