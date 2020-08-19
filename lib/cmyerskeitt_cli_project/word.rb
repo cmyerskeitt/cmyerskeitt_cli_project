@@ -1,0 +1,3 @@
+class CmyerskeittCliProject::word
+    
+end 

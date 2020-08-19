@@ -1,3 +1,0 @@
-class CmyerskeittCliProject::doctors
-    
-end 
