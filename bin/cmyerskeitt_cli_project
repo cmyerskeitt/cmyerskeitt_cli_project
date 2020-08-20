@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
-require_relative "../lib/cmyerskeitt_cli_project.rb"
+require_relative "../lib/environment.rb"
 
 CmyerskeittCliProject::Cli.new.start 
