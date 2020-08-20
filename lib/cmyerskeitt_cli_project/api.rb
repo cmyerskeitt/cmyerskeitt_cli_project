@@ -15,7 +15,6 @@ class CmyerskeittCliProject::Api
     http.use_ssl = true
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
-    binding.pry 
     request = Net::HTTP::Get.new(url)
     request["x-rapidapi-host"] = 'wordsapiv1.p.rapidapi.com'
     request["x-rapidapi-key"] = 'b48d7cc02cmsh92e80d060116fa8p103d07jsn1e37841644b3'
@@ -23,15 +22,14 @@ class CmyerskeittCliProject::Api
     response = http.request(request)
 
     data = JSON.parse(response.read_body)
-        data.each do |attribute|
         word = CmyerskeittCliProject::Word.new 
-        word.word = attribute["word"]
-        word.results= attribute["results"]
-        word.syllables= attribute["syllables"]
-        word.pronunciation= attribute["pronunciation"]
-        word.frequency= attribute["frequency"]
-
-        end
+        word.name = data["word"]
+        word.results= data["results"]
+        word.syllables= data["syllables"]
+        word.pronunciation= data["pronunciation"]
+        word.frequency= data["frequency"]
+        
+        
     end   
 end 
      
@@ -39,6 +37,8 @@ end
 #  puts data 
    
     #  hash["new_key"] = "New Value".
+
+
     # {"word"=>"apple",
     #     "results"=>
     #      [{"definition"=>
