@@ -6,7 +6,7 @@ require "json"
 require 'rest-client'
 
 class CmyerskeittCliProject::Api
-    #class Api
+    # class Api
 
     def fetch_data(word)
     url = URI("https://wordsapiv1.p.rapidapi.com/words/#{word}")
@@ -15,33 +15,28 @@ class CmyerskeittCliProject::Api
     http.use_ssl = true
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
-
+    binding.pry 
     request = Net::HTTP::Get.new(url)
     request["x-rapidapi-host"] = 'wordsapiv1.p.rapidapi.com'
     request["x-rapidapi-key"] = 'b48d7cc02cmsh92e80d060116fa8p103d07jsn1e37841644b3'
 
     response = http.request(request)
+
     data = JSON.parse(response.read_body)
-       
         data.each do |attribute|
-            word = Word.new 
+        word = CmyerskeittCliProject::Word.new 
         word.word = attribute["word"]
         word.results= attribute["results"]
         word.syllables= attribute["syllables"]
         word.pronunciation= attribute["pronunciation"]
         word.frequency= attribute["frequency"]
-        # CmyerskeittCliProject::Word.new(name,results,syllables,pronunciation,frequency) 
+
         end
-    end 
-
-
-   
-    
-     
+    end   
 end 
      
-    # data= Api.new.fetch_data("apple")
-    # puts data 
+#  data= Api.new.fetch_data("apple")
+#  puts data 
    
     #  hash["new_key"] = "New Value".
     # {"word"=>"apple",

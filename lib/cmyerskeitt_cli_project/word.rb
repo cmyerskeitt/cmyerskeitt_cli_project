@@ -1,16 +1,25 @@
 class CmyerskeittCliProject::Word
-#class word 
- @@all =[]
+# goal: receive the information from word
+# turn into attrubute in order to display on terminal
 
-attr_accessor :name, :results, :syllables,:pronunciation, :frequency 
+# class word 
+#  @@all =[]
+ attr_accessor :name, :results, :syllables,:pronunciation, :frequency
 
-    def initialize
-        @@all<<self
-    end
+#     def initialize(data)
 
-    def self.all
-    @@all
-    end 
+#         # self.send("name=", data[:name]) 
+#         # self.send("results=", data[:results])
+#         # self.send("syllables=", data[:syllables])
+#         # self.send("pronunication=", data[:pronunciation])
+#         # self.send("frequency=", data[:frequency])
+#         @@all<<self
+#     end
+
+#  def self.all
+#     @@all
+# end 
       
 end 
+
 
