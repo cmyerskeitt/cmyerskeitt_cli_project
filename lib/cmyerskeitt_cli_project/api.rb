@@ -20,7 +20,9 @@ class CmyerskeittCliProject::Api
 
     response = http.request(request)
    
-    puts response.read_body  
+    # puts response.read_body  
+    response.readbody["results"].each do |word|
+
     end 
    
     
