@@ -8,10 +8,10 @@ class CmyerskeittCliProject::Cli
     puts "This app is a quick way to explore the definitions, synonyms, rhymes, pronunciation, syllables, and frequency of usage for words."
     puts "What word would you like to explore today?"
     input= gets.chomp
-    make_wor
+  
 
-    # data= CmyerskeittCliProject::Api.new.fetch_data(input)
-    # puts data.results 
+
+    
     if input == ""
       start
     elseif input == "exit"
@@ -22,9 +22,6 @@ class CmyerskeittCliProject::Cli
       start
   end
 
-  # def make_words
-  # words_array = CmyerskeittCliProject::Api.new
-  # CmyerskeittCliProject::Word.create_from_api(words_array)
-  # end 
+
 end
 
