@@ -3,8 +3,8 @@ require 'net/http'
 require 'openssl'
 require 'pry'
 
-# class CmyerskeittCliProject::Api
-class Api
+class CmyerskeittCliProject::Api
+#class Api
 
     def fetch_data(word)
     url = URI("https://wordsapiv1.p.rapidapi.com/words/#{word}")
@@ -23,8 +23,9 @@ class Api
     puts response.read_body  
     end 
    
+    
      
 end 
-       data= Api.new.fetch_data("apple")
-        puts data 
+    #    data= Api.new.fetch_data("apple")
+    #     puts data 
    
