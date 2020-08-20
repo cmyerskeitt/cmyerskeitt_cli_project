@@ -3,8 +3,10 @@ require 'net/http'
 require 'openssl'
 require 'pry'
 require "json"
-# class CmyerskeittCliProject::Api
-class Api
+require 'rest-client'
+
+class CmyerskeittCliProject::Api
+    #class Api
 
     def fetch_data(word)
     url = URI("https://wordsapiv1.p.rapidapi.com/words/#{word}")
@@ -21,14 +23,14 @@ class Api
     response = http.request(request)
     data = JSON.parse(response.read_body)
        
-        data.collect do |attributes| 
-            binding.pry
-        name = data["word"]
-        results= data["results"]
-        syllables= data["syllables"]
-        pronunciation= data["pronunciation"]
-        frequency= data["frequency"]
-        Word.new(name,definitions,syllables,pronunciation,frequency) 
+        data.each do |attribute|
+            word = Word.new 
+        word.word = attribute["word"]
+        word.results= attribute["results"]
+        word.syllables= attribute["syllables"]
+        word.pronunciation= attribute["pronunciation"]
+        word.frequency= attribute["frequency"]
+        # CmyerskeittCliProject::Word.new(name,results,syllables,pronunciation,frequency) 
         end
     end 
 
@@ -38,8 +40,8 @@ class Api
      
 end 
      
-    data= Api.new.fetch_data("apple")
-    puts data 
+    # data= Api.new.fetch_data("apple")
+    # puts data 
    
     #  hash["new_key"] = "New Value".
     # {"word"=>"apple",
