@@ -22,13 +22,12 @@ class CmyerskeittCliProject::Api
     response = http.request(request)
 
     data = JSON.parse(response.read_body)
-        word = CmyerskeittCliProject::Word.new 
-        word.name = data["word"]
-        word.results= data["results"]
-        word.syllables= data["syllables"]
-        word.pronunciation= data["pronunciation"]
-        word.frequency= data["frequency"]
-        
+        name = data["word"]
+        results= data["results"]
+        syllables= data["syllables"]
+        pronunciation= data["pronunciation"]
+        frequency= data["frequency"]
+        word = CmyerskeittCliProject::Word.new(name,results, syllables, pronunciation,frequency) 
         
     end   
 end 

@@ -19,8 +19,8 @@ class CmyerskeittCliProject::Cli
   end 
 
   def find_info
-    filter=""
-    while filter != "exit app!"
+    input=""
+    while input != "exit app!"
     puts 'To get a gentle reminder of the word you entered, enter "name".'
     puts 'To get detailed definitions of your word, enter "definitions".'
     puts 'To get the synonyms of your word, enter "synonyms".'
@@ -29,7 +29,7 @@ class CmyerskeittCliProject::Cli
     puts 'To get the frequency of use for our word, enter "frequency".'
     puts 'To leave, type "exit app!"'
     puts "What would you like to do?"
-    filter=gets.chomp 
+    input=gets.chomp 
 
       case input
       when "name"
@@ -45,12 +45,25 @@ class CmyerskeittCliProject::Cli
       when "frequency"
         self.frequency
       else
-        "Type ina vaild request please"
+        "Type in a vaild request please"
       end 
     end 
   end 
 
+  # def list_name
+  # end 
 
+  # def list_results
+  # end 
+
+  # def list_pronunciation
+  # end 
+
+  # def list_syllables
+  # end
+
+  # def frequency 
+  # end 
 
 end 
   
