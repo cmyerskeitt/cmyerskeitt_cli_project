@@ -6,7 +6,7 @@ class CmyerskeittCliProject::Word
 #  @@all =[]
  attr_accessor :name, :results, :syllables,:pronunciation, :frequency
 
-#     def initialize(data)
+# def initialize(data)
 
 #         # self.send("name=", data[:name]) 
 #         # self.send("results=", data[:results])
