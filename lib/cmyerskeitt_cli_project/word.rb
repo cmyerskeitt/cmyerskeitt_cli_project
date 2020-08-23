@@ -12,15 +12,19 @@ class CmyerskeittCliProject::Word
         @syllables=syllables 
         @pronunciation=pronunciation
         @frequency=frequency 
-        # t addbinding.pry
         @@all<<self
+        binding.pry 
         
     end
 
-    
+
     def self.all
         @@all
     end 
+
+    # def print_info
+    #     puts "DEFINITIONS: #{@definitions}"
+    
 
     
     

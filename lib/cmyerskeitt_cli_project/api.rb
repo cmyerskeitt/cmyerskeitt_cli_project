@@ -24,8 +24,8 @@ class CmyerskeittCliProject::Api
     data = JSON.parse(response.read_body)
         name = data["word"]
         definitions= data["results"]
-        syllables= data["syllables"]
-        pronunciation= data["pronunciation"]
+        syllables= data["syllables"]["count"]
+        pronunciation= data["pronunciation"]["all"]
         frequency= data["frequency"]
         binding.pry
         word = CmyerskeittCliProject::Word.new(name, definitions, syllables, pronunciation,frequency) 
