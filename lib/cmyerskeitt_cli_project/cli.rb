@@ -73,15 +73,20 @@ class CmyerskeittCliProject::Cli
   
 
   def list_definitions
-     definitions=
-       CmyerskeittCliProject:: Word.all.collect {|word| word.definitions[1]["definition"]}
+     definitions= []
+      CmyerskeittCliProject:: Word.all.collect do |word|
+        word.definitions.each do |h|
+          definitions << h["definition"]
+        end
+      end
+
       # CmyerskeittCliProject:: Word.all.sort_by {|word| word.definitions}.each do |word|
-      #   puts 
-
-
-      binding.pry 
-      puts "DEFINITIONS: #{definitions}"
-      definitions
+      definitions.each do |d|
+        puts d 
+      end
+      #binding.pry 
+      #puts "DEFINITIONS: #{definitions}"
+  
     
   end 
 

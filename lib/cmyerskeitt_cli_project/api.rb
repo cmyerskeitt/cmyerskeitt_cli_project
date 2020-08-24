@@ -23,13 +23,6 @@ class CmyerskeittCliProject::Api
     data = JSON.parse(response.read_body)
         name = data["word"]
         definitions= data["results"]
-       
-        #  i = 1
-        # while i <= data["results"].count
-        #     data["results"]["#{i}"] ["definition"]
-        #    i += 1
-        #  end 
-
         syllables= data["syllables"]["count"]
         pronunciation= data["pronunciation"]["all"]
         frequency= data["frequency"]
