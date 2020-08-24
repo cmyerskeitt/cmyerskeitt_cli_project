@@ -6,7 +6,6 @@ require "json"
 require 'rest-client'
 
 class CmyerskeittCliProject::Api
-    # class Api
 
     def fetch_data(word)
     url = URI("https://wordsapiv1.p.rapidapi.com/words/#{word}")
@@ -24,10 +23,17 @@ class CmyerskeittCliProject::Api
     data = JSON.parse(response.read_body)
         name = data["word"]
         definitions= data["results"]
+       
+        #  i = 1
+        # while i <= data["results"].count
+        #     data["results"]["#{i}"] ["definition"]
+        #    i += 1
+        #  end 
+
         syllables= data["syllables"]["count"]
         pronunciation= data["pronunciation"]["all"]
         frequency= data["frequency"]
-        binding.pry
+        # binding.pry 
         word = CmyerskeittCliProject::Word.new(name, definitions, syllables, pronunciation,frequency) 
         
     end   

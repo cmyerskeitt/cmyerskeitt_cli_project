@@ -3,8 +3,9 @@ class CmyerskeittCliProject::Word
 # turn into attrubute in order to display on terminal
 
 
-     @@all =[]
- attr_accessor :name, :definitions, :syllables,:pronunciation, :frequency
+    @@all =[]
+
+    attr_accessor :name, :definitions, :syllables,:pronunciation, :frequency
 
     def initialize(name,definitions,syllables,pronunciation,frequency)
         @name=name 
@@ -13,7 +14,7 @@ class CmyerskeittCliProject::Word
         @pronunciation=pronunciation
         @frequency=frequency 
         @@all<<self
-        binding.pry 
+        # binding.pry 
         
     end
 
@@ -22,8 +23,7 @@ class CmyerskeittCliProject::Word
         @@all
     end 
 
-    # def print_info
-    #     puts "DEFINITIONS: #{@definitions}"
+
     
 
     

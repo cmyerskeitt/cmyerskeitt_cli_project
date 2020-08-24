@@ -1,7 +1,6 @@
 #If a person puts in a wrong word they get black a blank line for information? Is this ok? 
 #when listing the definitions how to I get rid of the brackets when listing?
-#when listing definitions is there a way to print a line in between each index?
-#How do I produce a list fromthe words previously passed into program?
+#How do I produce a list from the words previously passed into program?
 #I need to account for whitespace when user enters input
 
 class CmyerskeittCliProject::Cli 
@@ -12,6 +11,7 @@ class CmyerskeittCliProject::Cli
     # sleep 2
     puts "This app is a quick way to explore the detailed definitions, synonyms,  pronunciation, syllables, and frequency of usage of English words."
     # sleep 2
+    puts " " 
     puts "Here are 3 quick and easy Word Genius rules to live by:"
     # sleep 2
     puts "#1: Remember that each word can have more than one definition."
@@ -20,6 +20,7 @@ class CmyerskeittCliProject::Cli
     # sleep 1
     puts "#3: Use this gem to have fun. Play Scrabble. Pick up a crossword. Write a poem. Who said being a Word Genius had to be boring?"
     # sleep 1
+    puts " "
     puts "Let's get started!"
     # sleep 1
     puts "What word would you like to explore today?"
@@ -46,7 +47,7 @@ class CmyerskeittCliProject::Cli
     # puts 'If you would like to see a list of saved words, enter "genius".'
     puts 'To leave, type "exit app!"'
     puts "What would you like to do?"
-    input=gets.chomp 
+    input= gets.gsub(/\s+/, "")
 
       case input
       when "definitions"
@@ -72,9 +73,14 @@ class CmyerskeittCliProject::Cli
   
 
   def list_definitions
-     definitions= CmyerskeittCliProject:: Word.all.collect {|word| word.definitions}
+     definitions=
+       CmyerskeittCliProject:: Word.all.collect {|word| word.definitions[1]["definition"]}
+      # CmyerskeittCliProject:: Word.all.sort_by {|word| word.definitions}.each do |word|
+      #   puts 
+
+
       binding.pry 
-      puts "DEFINITIONS: #{definitions.first}"
+      puts "DEFINITIONS: #{definitions}"
       definitions
     
   end 
@@ -96,10 +102,7 @@ class CmyerskeittCliProject::Cli
     
   end 
 
-  # def list_saved_words 
-  #   binding.pry
-  #   puts CmyerskeittCliProject::Word.all.detect {|word|word.name}
-  # end
+  
 end 
 
 
