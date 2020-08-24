@@ -45,7 +45,7 @@ class CmyerskeittCliProject::Cli
     puts 'To get the syllables of youer word, enter "syllables".'
     puts 'To get the frequency of use, enter "frequency".'
     # puts 'If you would like to see a list of saved words, enter "genius".'
-    puts 'To leave, type "exit app!"'
+    puts 'To leave, type "exit!"'
     puts "What would you like to do?"
     input= gets.gsub(/\s+/, "")
 
@@ -61,7 +61,7 @@ class CmyerskeittCliProject::Cli
          self.list_frequency
       when "genius"
           self.list_saved_words
-      when "exit app!"
+      when "exit!"
         puts "You're definitely a word genius now. See you next time!"
         exit
       else
