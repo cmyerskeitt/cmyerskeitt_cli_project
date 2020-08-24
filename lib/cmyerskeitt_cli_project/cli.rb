@@ -44,7 +44,8 @@ class CmyerskeittCliProject::Cli
     puts 'To get the pronunciation of your word, enter "pronunciation".'
     puts 'To get the syllables of youer word, enter "syllables".'
     puts 'To get the frequency of use, enter "frequency".'
-    # puts 'If you would like to see a list of saved words, enter "genius".'
+    puts 'To look up another word, enter  "start".'
+    puts 'If you would like to see a list of saved words, enter "genius".'
     puts 'To leave, type "exit!"'
     puts "What would you like to do?"
     input= gets.gsub(/\s+/, "")
@@ -59,6 +60,8 @@ class CmyerskeittCliProject::Cli
         self.list_syllables
       when "frequency"
          self.list_frequency
+      when "start"
+        start 
       when "genius"
           self.list_saved_words
       when "exit!"
@@ -80,12 +83,13 @@ class CmyerskeittCliProject::Cli
         end
       end
 
-      # CmyerskeittCliProject:: Word.all.sort_by {|word| word.definitions}.each do |word|
-      definitions.each do |d|
-        puts d 
+      definitions.each.with_index(1) do |d, i|
+        puts "#{i} - #{d}"
+        # puts d 
+       
       end
       #binding.pry 
-      #puts "DEFINITIONS: #{definitions}"
+     
   
     
   end 
@@ -107,6 +111,9 @@ class CmyerskeittCliProject::Cli
     
   end 
 
+  def list_saved_words
+    binding.pry 
+  end
   
 end 
 
