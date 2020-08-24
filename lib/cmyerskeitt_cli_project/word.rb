@@ -13,9 +13,12 @@ class CmyerskeittCliProject::Word
         @syllables=syllables 
         @pronunciation=pronunciation
         @frequency=frequency 
-        @@all<<self
+        save 
+    end
+
+    def save 
+        @@all<< self
         # binding.pry 
-        
     end
 
 
