@@ -6,22 +6,21 @@
 class CmyerskeittCliProject::Cli 
   
   def start
-    puts "Welcome to the 2020 Word Genius CLI Gem!" 
-    # sleep 2
+    puts "Welcome to the Christine Myers Keitt's Word Genius CLI Gem!" 
     puts "This app is a quick way to explore the detailed definitions, synonyms,  pronunciation, syllables, and frequency of usage of English words."
-    # sleep 2
+    #sleep 2
     puts " " 
     puts "Here are 3 quick and easy Word Genius rules to live by:"
-    # sleep 2
+    puts " "
     puts "#1: Remember that each word can have more than one definition."
-    # sleep 1
+    sleep 1
     puts "#2: If you enter a word that does not exist the program will not return a value. I bet you already knew that though, Genius!"
-    # sleep 1
+    sleep 1
     puts "#3: Use this gem to have fun. Play Scrabble. Pick up a crossword. Write a poem. Who said being a Word Genius had to be boring?"
-    # sleep 1
+    sleep 1
     puts " "
     puts "Let's get started!"
-    # sleep 1
+    sleep 1
     puts "What word would you like to explore today?"
     input=gets.chomp
     CmyerskeittCliProject::Api.new.fetch_data(input)
@@ -45,7 +44,7 @@ class CmyerskeittCliProject::Cli
     puts 'To get the syllables of your word, enter "syllables".'
     puts 'To get the frequency of use, enter "frequency".'
     puts 'To look up another word, enter  "new".'
-    # puts 'If you would like to see a list of saved words, enter "genius".'
+    puts 'If you would like to see a list of saved words, enter "genius".'
     puts 'To leave, type "exit!"'
     puts " "
     puts "What would you like to do?"
@@ -63,8 +62,13 @@ class CmyerskeittCliProject::Cli
          list_frequency(word)
       when "new"
         new_word 
-      # when "genius"
-      #     self.list_saved_words
+      when "genius"
+        puts " "
+        list=CmyerskeittCliProject:: Word.all.collect {|word| word.name}
+        puts "Which word from the query would you like to reexplore: "
+        puts list
+        query_word= gets.chomp
+        find_info(query_word)
       when "exit!"
         puts "You're definitely a word genius now. See you next time!"
         exit
@@ -93,7 +97,7 @@ class CmyerskeittCliProject::Cli
 
 
   def list_pronunciation(word)
-    binding.pry
+    # binding.pry
     say_it=CmyerskeittCliProject:: Word.all.find { |w| w.name == word }
     say_it.pronunciation
     # # pronunciation= CmyerskeittCliProject:: Word.all.collect {|word| word.pronunciation}
@@ -113,49 +117,6 @@ class CmyerskeittCliProject::Cli
    say_it.frequency
       puts "FREQUENCY: #{say_it.frequency}"
   end 
-
-  # def list_saved_words
-  #   query_word=""
-  #   while query_word != "exit!"
-  #   list=CmyerskeittCliProject:: Word.all.collect {|word| word.name}
-  #   puts "Which word from the query would you like to reexplore: "
-  #   puts list
-  #   puts " "
-  #   puts "What word would you like to explore today?"
-  #   query_word=gets.chomp
-  #   puts " "
-  #   puts 'To get a list of definitions for your word, enter "definitions".'
-  #   puts 'To get the pronunciation of your word, enter "pronunciation".'
-  #   puts 'To get the syllables of your word, enter "syllables".'
-  #   puts 'To get the frequency of use, enter "frequency".'
-  #   puts 'To look up another word, enter  "start".'
-  #   puts 'If you would like to see a list of saved words, enter "genius".'
-  #   puts 'To leave, type "exit!"'
-  #   puts " "
-
-  #     case query_word 
-  #       when "definitions"
-  #       binding.pry
-      
-  #     when "pronunciation"
-  #   #     got into self.all and get 
-  #     when "syllables"
-  #   #     got into self.all and get 
-  #     when "frequency"
-  #   #     got into self.all and get 
-  #     when "start"
-  #      new_word 
-  #     when "genius"
-  #     self.list_saved_words
-  #     when "exit!"
-  #     puts "You're definitely a word genius now. See you next time!"
-  #     exit
-  #     else
-  #     puts "Type in a valid request from the list, genius!"
-  #     end 
-  #   end
-  # end 
-  
 
 
   def new_word 
