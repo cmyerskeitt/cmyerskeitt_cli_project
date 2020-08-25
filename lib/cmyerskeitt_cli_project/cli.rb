@@ -15,7 +15,6 @@ class CmyerskeittCliProject::Cli
     sleep 1
     puts "#3: Use this gem to have fun. Play Scrabble. Pick up a crossword. Write a poem. Who said being a Word Genius had to be boring?"
     sleep 1
-    puts '#4: Enter "exit!" at anytime to close the app.'
     puts " "
     puts "Let's get started!"
     sleep 1
