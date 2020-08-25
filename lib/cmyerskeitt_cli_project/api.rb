@@ -21,14 +21,19 @@ class CmyerskeittCliProject::Api
     response = http.request(request)
 
     data = JSON.parse(response.read_body)
-        name = data["word"]
-        definitions= data["results"]
-        syllables= data["syllables"]["count"]
-        pronunciation= data["pronunciation"]["all"]
-        frequency= data["frequency"]
-        # binding.pry 
-        word = CmyerskeittCliProject::Word.new(name, definitions, syllables, pronunciation,frequency) 
-        
+        # binding.pry
+        if data["success"] == false 
+            puts "This is not a valid input. Please enter a English word."
+            CmyerskeittCliProject::Cli.new.start
+        else 
+            name = data["word"]
+            definitions= data["results"]
+            syllables= data["syllables"]["count"]
+            pronunciation= data["pronunciation"]["all"]
+            frequency= data["frequency"]
+             # binding.pry 
+            word = CmyerskeittCliProject::Word.new(name, definitions, syllables, pronunciation,frequency) 
+        end
     end   
 end 
      

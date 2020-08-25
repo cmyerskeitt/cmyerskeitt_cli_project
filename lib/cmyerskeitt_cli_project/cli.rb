@@ -1,11 +1,8 @@
 #If a person puts in a wrong word they get black a blank line for information? Is this ok? 
-#when listing the definitions how to I get rid of the brackets when listing?
-#How do I produce a list from the words previously passed into program?
-#I need to account for whitespace when user enters input
 
 class CmyerskeittCliProject::Cli 
   
-  def start
+  def new_start
     puts "Welcome to the Christine Myers Keitt's Word Genius CLI Gem!" 
     puts "This app is a quick way to explore the detailed definitions, synonyms,  pronunciation, syllables, and frequency of usage of English words."
     #sleep 2
@@ -22,6 +19,10 @@ class CmyerskeittCliProject::Cli
     puts "Let's get started!"
     sleep 1
     puts "What word would you like to explore today?"
+    start
+  end
+
+  def start
     input=gets.chomp
     CmyerskeittCliProject::Api.new.fetch_data(input)
     if input == ""
