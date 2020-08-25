@@ -69,7 +69,7 @@ class CmyerskeittCliProject::Cli
       when "genius"
         puts " "
         list=CmyerskeittCliProject:: Word.all.collect {|word| word.name}.uniq
-        puts "Which word from the query would you like to reexplore: "
+        puts "Type in the word from the query that you would you like to reexplore: "
         puts list
         query_word= gets.chomp
         find_info(query_word)
