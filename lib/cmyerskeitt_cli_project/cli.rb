@@ -24,8 +24,9 @@ class CmyerskeittCliProject::Cli
   end
 
   def start
-    input=gets.chomp
+    input= ""
     while input !="exit!"
+      input=gets.chomp
       CmyerskeittCliProject::Api.new.fetch_data(input)
       if input == ""
        start
@@ -52,7 +53,7 @@ class CmyerskeittCliProject::Cli
     puts 'To leave, type "exit!"'
     puts " "
     puts "What would you like to do?"
-    input= gets.gsub(/\s+/, "")
+    input= gets.gsub(/\s+/, "").downcase 
 
       case input
       when "definitions"
