@@ -31,21 +31,21 @@ class CmyerskeittCliProject::Cli
       puts "Don't forget to type in a word. Let's take it from the top, Genius!"
       start
     else
-        find_info
+        find_info(input)
     end 
   end 
 
 
-  def find_info
+  def find_info(word)
     input=""
     while input != "exit app!"
     puts " "
     puts 'To get a list of definitions for your word, enter "definitions".'
     puts 'To get the pronunciation of your word, enter "pronunciation".'
-    puts 'To get the syllables of youer word, enter "syllables".'
+    puts 'To get the syllables of your word, enter "syllables".'
     puts 'To get the frequency of use, enter "frequency".'
-    puts 'To look up another word, enter  "start".'
-    puts 'If you would like to see a list of saved words, enter "genius".'
+    puts 'To look up another word, enter  "new".'
+    # puts 'If you would like to see a list of saved words, enter "genius".'
     puts 'To leave, type "exit!"'
     puts " "
     puts "What would you like to do?"
@@ -53,18 +53,18 @@ class CmyerskeittCliProject::Cli
 
       case input
       when "definitions"
-        self.list_definitions
-        # How can I get these to print out with a space in between each definition?
+        #binding.pry 
+        list_definitions(word)
       when "pronunciation"
-        self.list_pronunciation
+       list_pronunciation(word)
       when "syllables"
-        self.list_syllables
+        list_syllables(word)
       when "frequency"
-         self.list_frequency
-      when "start"
+         list_frequency(word)
+      when "new"
         new_word 
-      when "genius"
-          self.list_saved_words
+      # when "genius"
+      #     self.list_saved_words
       when "exit!"
         puts "You're definitely a word genius now. See you next time!"
         exit
@@ -76,96 +76,104 @@ class CmyerskeittCliProject::Cli
 
   
 
-  def list_definitions
+  def list_definitions(word)
+    #binding.pry
      definitions= []
-      CmyerskeittCliProject:: Word.all.collect do |word|
-        word.definitions.each do |h|
+      found = CmyerskeittCliProject::Word.all.find { |w| w.name == word }
+      #binding.pry
+        found.definitions.each do |h|
           definitions << h["definition"]
         end
-      end
-
+     
       definitions.each.with_index(1) do |d, i|
         puts "#{i} - #{d}"
         # puts d 
-       
       end
-   
-     
-  
-    
   end 
 
 
-  def list_pronunciation
-    pronunciation= CmyerskeittCliProject:: Word.all.collect {|word| word.pronunciation}
-    puts "PRONUNCIATION: #{pronunciation.first}"
+  def list_pronunciation(word)
+    binding.pry
+    say_it=CmyerskeittCliProject:: Word.all.find { |w| w.name == word }
+    say_it.pronunciation
+    # # pronunciation= CmyerskeittCliProject:: Word.all.collect {|word| word.pronunciation}
+    # binding.pry 
+
+    puts "PRONUNCIATION: #{say_it.pronunciation}"
   end 
 
-  def list_syllables
-    syllables= CmyerskeittCliProject:: Word.all.collect {|word| word.syllables}
-      puts "SYLLABLES: #{syllables.first}"
+  def list_syllables(word)
+    say_it=CmyerskeittCliProject:: Word.all.find { |w| w.name == word }
+    say_it.syllables 
+      puts "SYLLABLES: #{say_it.syllables}"
   end
 
-  def list_frequency 
-    frequency=CmyerskeittCliProject::Word.all.collect {|word| word.frequency}
-      puts "FREQUENCY: #{frequency.first}"
+  def list_frequency(word)
+   say_it=CmyerskeittCliProject::Word.all.find { |w| w.name == word }
+   say_it.frequency
+      puts "FREQUENCY: #{say_it.frequency}"
   end 
 
-  def list_saved_words
-    list=CmyerskeittCliProject:: Word.all.collect {|word| word.name}
-    puts "Which word from the query would you like to reexplore: "
-    puts list
-    puts " "
-    puts "What word would you like to explore today?"
-    query_word= gets.chomp
-    puts " "
-    puts 'To get a list of definitions for your word, enter "definitions".'
-    puts 'To get the pronunciation of your word, enter "pronunciation".'
-    puts 'To get the syllables of youer word, enter "syllables".'
-    puts 'To get the frequency of use, enter "frequency".'
-    puts 'To look up another word, enter  "start".'
-    puts 'If you would like to see a list of saved words, enter "genius".'
-    puts 'To leave, type "exit!"'
-    puts " "
+  # def list_saved_words
+  #   query_word=""
+  #   while query_word != "exit!"
+  #   list=CmyerskeittCliProject:: Word.all.collect {|word| word.name}
+  #   puts "Which word from the query would you like to reexplore: "
+  #   puts list
+  #   puts " "
+  #   puts "What word would you like to explore today?"
+  #   query_word=gets.chomp
+  #   puts " "
+  #   puts 'To get a list of definitions for your word, enter "definitions".'
+  #   puts 'To get the pronunciation of your word, enter "pronunciation".'
+  #   puts 'To get the syllables of your word, enter "syllables".'
+  #   puts 'To get the frequency of use, enter "frequency".'
+  #   puts 'To look up another word, enter  "start".'
+  #   puts 'If you would like to see a list of saved words, enter "genius".'
+  #   puts 'To leave, type "exit!"'
+  #   puts " "
 
-    case query_word 
-    while query_word != "exit!"
-    when "definitions"
-    #     go into self.all and get definition
-    when "pronunciation"
-    #     got into self.all and get 
-    when "syllables"
-    #     got into self.all and get 
-    when "frequency"
-    #     got into self.all and get 
-    when "start"
-       new_word 
-    when "genius"
-      self.list_saved_words
-    when "exit!"
-      puts "You're definitely a word genius now. See you next time!"
-      exit
-    else
-      puts "Type in a valid request from the list, genius!"
-    end 
-    
-  end 
+  #     case query_word 
+  #       when "definitions"
+  #       binding.pry
+      
+  #     when "pronunciation"
+  #   #     got into self.all and get 
+  #     when "syllables"
+  #   #     got into self.all and get 
+  #     when "frequency"
+  #   #     got into self.all and get 
+  #     when "start"
+  #      new_word 
+  #     when "genius"
+  #     self.list_saved_words
+  #     when "exit!"
+  #     puts "You're definitely a word genius now. See you next time!"
+  #     exit
+  #     else
+  #     puts "Type in a valid request from the list, genius!"
+  #     end 
+  #   end
+  # end 
   
 
 
   def new_word 
     puts " "
     puts "What word would you like to explore today?"
-    input=gets.chomp
-    CmyerskeittCliProject::Api.new.fetch_data(input)
-    if input == ""
-      start
-    elseif input == " "
+    new_input= gets.chomp
+    CmyerskeittCliProject::Api.new.fetch_data(new_input)
+    if new_input == ""
+      new_word
+    elseif new_input == " "
       puts "Don't forget to type in a word. Let's take it from the top, Genius!"
       new_word
     else
-      find_info
+      find_info(new_input)
     end 
   end 
+
+
+
 end
 

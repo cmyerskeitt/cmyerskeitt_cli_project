@@ -26,9 +26,7 @@ class CmyerskeittCliProject::Word
         @@all
     end 
 
-
-    
-
+   
     
     
        
