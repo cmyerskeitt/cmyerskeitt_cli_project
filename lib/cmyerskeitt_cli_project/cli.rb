@@ -73,6 +73,7 @@ class CmyerskeittCliProject::Cli
         puts list
         query_word= gets.chomp
         find_info(query_word)
+
       when "exit!"
         puts "You're definitely a word genius now. See you next time!"
         exit
