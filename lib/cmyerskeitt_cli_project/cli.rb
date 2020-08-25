@@ -15,6 +15,7 @@ class CmyerskeittCliProject::Cli
     sleep 1
     puts "#3: Use this gem to have fun. Play Scrabble. Pick up a crossword. Write a poem. Who said being a Word Genius had to be boring?"
     sleep 1
+    puts '#4: Enter "exit!" at anytime to close the app.'
     puts " "
     puts "Let's get started!"
     sleep 1
@@ -24,21 +25,23 @@ class CmyerskeittCliProject::Cli
 
   def start
     input=gets.chomp
-    CmyerskeittCliProject::Api.new.fetch_data(input)
-    if input == ""
+    while input !="exit!"
+      CmyerskeittCliProject::Api.new.fetch_data(input)
+      if input == ""
        start
-    elseif input == " "
+      elseif input == " "
       puts "Don't forget to type in a word. Let's take it from the top, Genius!"
       start
-    else
+      else
         find_info(input)
+      end 
     end 
   end 
 
 
   def find_info(word)
     input=""
-    while input != "exit app!"
+    while input != "exit!"
     puts " "
     puts 'To get a list of definitions for your word, enter "definitions".'
     puts 'To get the pronunciation of your word, enter "pronunciation".'
@@ -65,7 +68,7 @@ class CmyerskeittCliProject::Cli
         new_word 
       when "genius"
         puts " "
-        list=CmyerskeittCliProject:: Word.all.collect {|word| word.name}
+        list=CmyerskeittCliProject:: Word.all.collect {|word| word.name}.uniq
         puts "Which word from the query would you like to reexplore: "
         puts list
         query_word= gets.chomp
@@ -82,6 +85,9 @@ class CmyerskeittCliProject::Cli
   
 
   def list_definitions(word)
+    puts " "
+    puts "#{word.capitalize}"
+    puts "DEFINITIONS:"
     #binding.pry
      definitions= []
       found = CmyerskeittCliProject::Word.all.find { |w| w.name == word }
