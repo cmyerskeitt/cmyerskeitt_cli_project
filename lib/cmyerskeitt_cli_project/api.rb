@@ -1,9 +1,9 @@
-require 'uri'
-require 'net/http'
-require 'openssl'
-require 'pry'
-require "json"
-require 'rest-client'
+require 'uri' #uniform handling of handling URIs
+require 'net/http' #provides a rich library which can be used to build HTTP user-agents
+require 'openssl' #OpenSSL provides SSL, TLS and general purpose cryptography.
+require 'pry' #debug w/o IRB 
+require "json" #format data from Api 
+require 'rest-client' #a simple HTTP and REST client for Ruby, inspired by the Sinatra’s microframework style of specifying actions: get, put, post, delete.” Like HTTParty, it’s also built upon net/http. Unlike HTTParty, you’ll still need the JSON  library to parse the response.
 
 class CmyerskeittCliProject::Api
 

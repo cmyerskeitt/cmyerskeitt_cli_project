@@ -8,7 +8,3 @@ require_relative "../lib/cmyerskeitt_cli_project/word"
 
 #requires pry and json before files to ensure that they load before the classes/methods being called 
 
-# module CmyerskeittCliProject
-#   class Error < StandardError; end
-#   # Your code goes here...
-# end
