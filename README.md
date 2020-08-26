@@ -1,14 +1,8 @@
-A short description
-Install instructions
-A contributor's guide
-A link to the license for your code
-
 
 # CmyerskeittCliProject
 
-Welcome to Christine Myers Keitt's Word Genius CLI Gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/cmyerskeitt_cli_project`. To experiment with that code, run `bin/console` for an interactive prompt.
+Welcome to Christine Myers Keitt's Word Genius CLI Gem! This gem is a quick way to explore the detailed definitions, synonyms,  pronunciation, syllables, and frequency of usage of English words. 
 
-TODO: Delete this and the text above, and describe your gem
 
 ## Installation
 
@@ -28,7 +22,19 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Great! You are finally ready to use this gem to become a word genius...
+
+Follow these instructions: 
+    1. Enter "cd cmyerskeit_cli_project" into the terminal to change directorues into cmyerskeitt_cli_project.
+    2. Enter "bundle install" to load all of the required gems.
+    3. Type in "bin/cmyerskeitt_cli_project"
+    4. The Cli will welcome the user and display with general information for using the user.
+    5. The user will be prompted to enter a English word to explore. 
+    6. The user will see a list of options to chose from. 
+    7. Choose your selection and enter the required keyword.
+    8. If you put in an incorrect response, the program will prompt you to put in a valid response.
+    9. Type "exit!" when you are done using the program.
+
 
 ## Development
 
