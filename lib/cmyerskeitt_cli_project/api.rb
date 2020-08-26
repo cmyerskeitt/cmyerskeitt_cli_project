@@ -26,14 +26,25 @@ class CmyerskeittCliProject::Api
             puts "This is not a valid input. Please enter a English word."
             CmyerskeittCliProject::Cli.new.start
         else 
-            name = data["word"]
-            definitions= data["results"]
-            syllables= data["syllables"]["count"]
-            pronunciation= data["pronunciation"]["all"]
-            frequency= data["frequency"]
-             # binding.pry 
+            if data["word"] != nil
+                name = data["word"]
+            end 
+            if data["results"] != nil
+                definitions = data["results"]
+            end 
+            if data["syllables"]!= nil 
+                syllables = data["syllables"]["count"]
+            end 
+            if data["pronunciation"]!= nil
+                pronunciation = data["pronunciation"]["all"]
+            end 
+            if data["frequency"] != nil
+                frequency = data["frequency"]
+            end 
+            #  binding.pry 
             word = CmyerskeittCliProject::Word.new(name, definitions, syllables, pronunciation,frequency) 
         end
+        binding.pry 
     end   
 end 
      

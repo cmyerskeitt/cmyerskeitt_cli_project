@@ -5,7 +5,6 @@ class CmyerskeittCliProject::Cli
   def new_start
     puts "Welcome to the Christine Myers Keitt's Word Genius CLI Gem!" 
     puts "This app is a quick way to explore the detailed definitions, synonyms,  pronunciation, syllables, and frequency of usage of English words."
-    #sleep 2
     puts " " 
     puts "Here are 3 quick and easy Word Genius rules to live by:"
     puts " "
