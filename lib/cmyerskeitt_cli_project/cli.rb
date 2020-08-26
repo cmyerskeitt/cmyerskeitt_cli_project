@@ -1,8 +1,8 @@
 #If a person puts in a wrong word they get black a blank line for information? Is this ok? 
 
-class CmyerskeittCliProject::Cli 
+class CmyerskeittCliProject::Cli #Cli Class controls the structure of the the Command line Interface/What the user will see
   
-  def new_start
+  def new_start  #call new_start starts the program and calls on start method 
     puts "Welcome to the Christine Myers Keitt's Word Genius CLI Gem!" 
     puts "This app is a quick way to explore the detailed definitions, synonyms,  pronunciation, syllables, and frequency of usage of English words."
     puts " " 
@@ -21,12 +21,12 @@ class CmyerskeittCliProject::Cli
     start
   end
 
-  def start
+  def start #calling start prompts the user to input word and to chose from a list of categories for each word 
     input= ""
-    while input !="exit!"
+    while input !="exit!"  #while loop to create exit from program
       input=gets.chomp
       CmyerskeittCliProject::Api.new.fetch_data(input)
-      if input == ""
+      if input == ""     #conditional to error handle invalid input 
        start
       elseif input == " "
       puts "Don't forget to type in a word. Let's take it from the top, Genius!"
@@ -38,7 +38,7 @@ class CmyerskeittCliProject::Cli
   end 
 
 
-  def find_info(word)
+  def find_info(word) #calling passes user input(categories to case statement to access correct data)
     input=""
     while input != "exit!"
     puts " "
@@ -51,9 +51,9 @@ class CmyerskeittCliProject::Cli
     puts 'To leave, type "exit!"'
     puts " "
     puts "What would you like to do?"
-    input= gets.gsub(/\s+/, "").downcase 
+    input= gets.gsub(/\s+/, "").downcase #gets rid of all whitespace and downcases input 
 
-      case input
+      case input #case statement directs data based on user input(categories)
       when "definitions"
         #binding.pry 
         list_definitions(word)
@@ -84,7 +84,7 @@ class CmyerskeittCliProject::Cli
 
   
 
-  def list_definitions(word)
+  def list_definitions(word) # passes word as an argument and lists definitions from Word.all 
     puts " "
     puts "#{word.capitalize}"
     puts "DEFINITIONS:"
@@ -103,7 +103,7 @@ class CmyerskeittCliProject::Cli
   end 
 
 
-  def list_pronunciation(word)
+  def list_pronunciation(word) #passes word as an argument lists pronunciations from Word.all
     # binding.pry
     say_it=CmyerskeittCliProject:: Word.all.find { |w| w.name == word }
     say_it.pronunciation
@@ -113,21 +113,20 @@ class CmyerskeittCliProject::Cli
     puts "PRONUNCIATION: #{say_it.pronunciation}"
   end 
 
-  def list_syllables(word)
+  def list_syllables(word) #passes word as an argument lists syllables from Word.all
     say_it=CmyerskeittCliProject:: Word.all.find { |w| w.name == word }
     say_it.syllables 
       puts "SYLLABLES: #{say_it.syllables}"
   end
 
-  def list_frequency(word)
+  def list_frequency(word) #passes word as an argument lists frequency from Word.all
    say_it=CmyerskeittCliProject::Word.all.find { |w| w.name == word }
    say_it.frequency
       puts "FREQUENCY: #{say_it.frequency}"
   end 
 
 
-  def new_word 
-    puts " "
+  def new_word #allows user to input a new word, calls in the Api, and then reroutes user to find_info(word) 
     puts "What word would you like to explore today?"
     new_input= gets.chomp
     CmyerskeittCliProject::Api.new.fetch_data(new_input)

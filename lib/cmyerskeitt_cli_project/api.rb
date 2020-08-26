@@ -7,7 +7,7 @@ require 'rest-client'
 
 class CmyerskeittCliProject::Api
 
-    def fetch_data(word)
+    def fetch_data(word) #fetches Api data for word passed through as argument and sends data to Word class 
     url = URI("https://wordsapiv1.p.rapidapi.com/words/#{word}")
 
     http = Net::HTTP.new(url.host, url.port)
@@ -22,11 +22,11 @@ class CmyerskeittCliProject::Api
 
     data = JSON.parse(response.read_body)
         # binding.pry
-        if data["success"] == false 
+        if data["success"] == false  #error handling for Non-English word 
             puts "This is not a valid input. Please enter a English word."
             CmyerskeittCliProject::Cli.new.start
         else 
-            if data["word"] != nil
+            if data["word"] != nil #conditional statements to erroe handle for missing data/nil
                 name = data["word"]
             end 
             if data["results"] != nil
@@ -50,20 +50,3 @@ end
      
 #  data= Api.new.fetch_data("apple")
 #  puts data 
-   
-    #  hash["new_key"] = "New Value".
-
-
-    # {"word"=>"apple",
-    #     "results"=>
-    #      [{"definition"=>
-    #         "native Eurasian tree widely cultivated in many varieties for its firm rounded edible fruits",
-    #        "partOfSpeech"=>"noun",
-    #        "synonyms"=>["malus pumila", "orchard apple tree"],
-    #        "typeOf"=>["apple tree"],
-    #        "memberOf"=>["malus", "genus malus"]},
-    #       {"definition"=>
-    #         "fruit with red or yellow or green skin and sweet to tart crisp whitish flesh",
-    #        "partOfSpeech"=>"noun",
-    #        "typeOf"=>["pome", "false fruit", "edible fruit"],
-    #        "hasTypes"=>
