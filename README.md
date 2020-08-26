@@ -25,15 +25,14 @@ Or install it yourself as:
 Great! You are finally ready to use this gem to become a word genius...
 
 Follow these instructions: 
-    1. Enter "cd cmyerskeit_cli_project" into the terminal to change directorues into cmyerskeitt_cli_project.
-    2. Enter "bundle install" to load all of the required gems.
-    3. Type in "bin/cmyerskeitt_cli_project"
-    4. The Cli will welcome the user and display with general information for using the user.
-    5. The user will be prompted to enter a English word to explore. 
-    6. The user will see a list of options to chose from. 
-    7. Choose your selection and enter the required keyword.
-    8. If you put in an incorrect response, the program will prompt you to put in a valid response.
-    9. Type "exit!" when you are done using the program.
+    1. Enter "bundle install" to load all of the required gems.
+    2. Type in "bin/cmyerskeitt_cli_project"
+    3. The Cli will welcome the user and display with general information for using the user.
+    4. The user will be prompted to enter a English word to explore. 
+    5. The user will see a list of options to chose from. 
+    6. Choose your selection and enter the required keyword.
+    7. If you put in an incorrect response, the program will prompt you to put in a valid response.
+    8. Type "exit!" when you are done using the program.
 
 
 ## Development
