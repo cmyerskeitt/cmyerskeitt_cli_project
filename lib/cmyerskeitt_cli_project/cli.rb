@@ -124,7 +124,7 @@ class CmyerskeittCliProject::Cli #Cli Class controls the structure of the the Co
    say_it=CmyerskeittCliProject::Word.all.find { |w| w.name == word }
    say_it.frequency
       puts "FREQUENCY: #{say_it.frequency}"
-      puts "Frequency is assesed on a scale of 1-7. 1 being low usage in the English language and 7 high usage in the English language."
+      puts "Frequency is assesed on a scale of 1-7. 1 being low usage in the English language and 7 being high usage in the English language."
   end 
 
 
