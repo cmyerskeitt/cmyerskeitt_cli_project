@@ -23,7 +23,7 @@ class CmyerskeittCliProject::Api
     data = JSON.parse(response.read_body)
         # binding.pry
         if data["success"] == false  #error handling for Non-English word 
-            puts "This is not a valid input. Please enter a English word."
+            puts "This is not a valid input. Please enter an English word."
             CmyerskeittCliProject::Cli.new.start
         else 
             if data["word"] != nil #conditional statements to erroe handle for missing data/nil
