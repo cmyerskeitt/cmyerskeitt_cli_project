@@ -4,7 +4,7 @@ class CmyerskeittCliProject::Cli #Cli Class controls the structure of the the Co
   
   def new_start  #call new_start starts the program and calls on start method 
     puts "Welcome to the Christine Myers Keitt's Word Genius CLI Gem!" 
-    puts "This app is a quick way to explore the detailed definitions, synonyms,  pronunciation, syllables, and frequency of usage of English words."
+    puts "This app is a quick way to explore the detailed definitions, pronunciation, syllables, and frequency of usage of English words."
     puts " " 
     puts "Here are 3 quick and easy Word Genius rules to live by:"
     puts " "
