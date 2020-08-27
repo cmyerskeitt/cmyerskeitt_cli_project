@@ -68,8 +68,9 @@ class CmyerskeittCliProject::Cli #Cli Class controls the structure of the the Co
       when "genius"
         puts " "
         list=CmyerskeittCliProject:: Word.all.collect {|word| word.name}.uniq
-        puts "Type in the word from the query that you would you like to reexplore: "
         puts list
+        puts " "
+        puts "Type in the word from the query above that you would you like to reexplore: "
         query_word= gets.chomp
         find_info(query_word)
 

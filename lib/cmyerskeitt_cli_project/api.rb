@@ -44,7 +44,7 @@ class CmyerskeittCliProject::Api
             #  binding.pry 
             word = CmyerskeittCliProject::Word.new(name, definitions, syllables, pronunciation,frequency) 
         end
-        binding.pry 
+        # binding.pry 
     end   
 end 
      
