@@ -1,13 +1,13 @@
-require 'uri' #uniform handling of handling URIs
-require 'net/http' #provides a rich library which can be used to build HTTP user-agents
-require 'openssl' #OpenSSL provides SSL, TLS and general purpose cryptography.
-require 'pry' #debug w/o IRB 
-require "json" #format data from Api 
-require 'rest-client' #a simple HTTP and REST client for Ruby, inspired by the Sinatra’s microframework style of specifying actions: get, put, post, delete.” Like HTTParty, it’s also built upon net/http. Unlike HTTParty, you’ll still need the JSON  library to parse the response.
+require 'uri'
+require 'net/http'
+require 'openssl' 
+require 'pry'
+require "json" 
+require 'rest-client' 
 
 class CmyerskeittCliProject::Api
 
-    def fetch_data(word) #fetches Api data for word passed through as argument and sends data to Word class 
+    def fetch_data(word) 
     url = URI("https://wordsapiv1.p.rapidapi.com/words/#{word}")
 
     http = Net::HTTP.new(url.host, url.port)
@@ -21,12 +21,12 @@ class CmyerskeittCliProject::Api
     response = http.request(request)
 
     data = JSON.parse(response.read_body)
-        # binding.pry
-        if data["success"] == false  #error handling for Non-English word 
+         #binding.pry
+        if data["success"] == false  
             puts "This is not a valid input. Please enter an English word."
             CmyerskeittCliProject::Cli.new.start
         else 
-            if data["word"] != nil #conditional statements to erroe handle for missing data/nil
+            if data["word"] != nil 
                 name = data["word"]
             end 
             if data["results"] != nil
@@ -49,4 +49,3 @@ class CmyerskeittCliProject::Api
 end 
      
 #  data= Api.new.fetch_data("apple")
-#  puts data 

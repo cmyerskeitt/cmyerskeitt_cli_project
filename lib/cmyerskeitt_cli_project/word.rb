@@ -1,10 +1,10 @@
-class CmyerskeittCliProject::Word #Word class to create instances of each word pulled from Api 
+class CmyerskeittCliProject::Word
 
-    @@all =[] #array of all word data saved 
+    @@all =[] 
 
     attr_accessor :name, :definitions, :syllables,:pronunciation, :frequency
 
-    def initialize(name,definitions,syllables,pronunciation,frequency) #must initialize with attributes to access data in Word class 
+    def initialize(name,definitions,syllables,pronunciation,frequency) 
         @name=name 
         @definitions=definitions 
         @syllables=syllables 
@@ -14,12 +14,12 @@ class CmyerskeittCliProject::Word #Word class to create instances of each word p
         save 
     end
 
-    def save #saves word data into @@all
+    def save 
         @@all<< self
     end
 
 
-    def self.all #accesses @@all/saved word data
+    def self.all
         @@all
     end 
       

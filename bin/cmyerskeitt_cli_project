@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
 require_relative "../lib/environment.rb"
 
-CmyerskeittCliProject::Cli.new.new_start #This method calls on the method #new_start in my Cli Class 
+CmyerskeittCliProject::Cli.new.new_start 
