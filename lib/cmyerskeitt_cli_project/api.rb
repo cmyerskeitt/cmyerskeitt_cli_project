@@ -1,4 +1,4 @@
-require 'uri'
+addrequire 'uri'
 require 'net/http'
 require 'openssl' 
 require 'pry'
